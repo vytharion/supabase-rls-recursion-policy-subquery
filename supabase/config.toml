@@ -1,0 +1,15 @@
+# Minimal Supabase CLI config. Real projects keep many more keys here;
+# this article only needs the project handle + db port so `supabase start`
+# can boot the local stack the tutorial points at.
+project_id = "supabase-rls-recursion-policy-subquery"
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public"]
