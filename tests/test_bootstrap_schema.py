@@ -14,13 +14,13 @@ from tests._sql import (
     SEED_PATH,
     count_inserts,
     create_table_body,
-    latest_migration_path,
+    migration_path,
     normalized,
 )
 
 
 def _migration_sql() -> str:
-    return normalized(latest_migration_path().read_text())
+    return normalized(migration_path("0001").read_text())
 
 
 def _seed_sql() -> str:

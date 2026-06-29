@@ -21,6 +21,13 @@ def latest_migration_path() -> Path:
     return files[-1]
 
 
+def migration_path(prefix: str) -> Path:
+    matches = sorted(MIGRATIONS_DIR.glob(f"{prefix}*.sql"))
+    if not matches:
+        raise AssertionError(f"no migration starting with {prefix!r} in {MIGRATIONS_DIR}")
+    return matches[0]
+
+
 def _strip_comments(sql: str) -> str:
     sql = re.sub(r"--[^\n]*", "", sql)
     sql = re.sub(r"/\*.*?\*/", "", sql, flags=re.DOTALL)
