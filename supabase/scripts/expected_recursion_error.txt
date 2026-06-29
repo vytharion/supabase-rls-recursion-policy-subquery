@@ -1,0 +1,7 @@
+$ psql "$DATABASE_URL" -f supabase/scripts/reproduce_recursion.sql
+BEGIN
+SET
+SET
+psql:supabase/scripts/reproduce_recursion.sql:27: ERROR:  42P17: infinite recursion detected in policy for relation "memberships"
+LOCATION:  fireRIRrules, rewriteHandler.c:2167
+ROLLBACK
