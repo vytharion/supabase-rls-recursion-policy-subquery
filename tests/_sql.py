@@ -12,6 +12,16 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 MIGRATIONS_DIR = REPO_ROOT / "supabase" / "migrations"
 SEED_PATH = REPO_ROOT / "supabase" / "seed.sql"
+PGTAP_TESTS_DIR = REPO_ROOT / "supabase" / "tests"
+
+
+def pgtap_test_path(stem: str) -> Path:
+    matches = sorted(PGTAP_TESTS_DIR.glob(f"{stem}*.sql"))
+    if not matches:
+        raise AssertionError(
+            f"no pgTAP test starting with {stem!r} in {PGTAP_TESTS_DIR}"
+        )
+    return matches[0]
 
 
 def latest_migration_path() -> Path:
